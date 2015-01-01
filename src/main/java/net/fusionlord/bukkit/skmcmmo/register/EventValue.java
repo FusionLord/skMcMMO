@@ -3,20 +3,13 @@ package net.fusionlord.bukkit.skmcmmo.register;
 import ch.njol.skript.classes.SerializableGetter;
 import ch.njol.skript.registrations.EventValues;
 import net.fusionlord.bukkit.skmcmmo.events.skript.EvtMcMMOLevelUp;
-import net.fusionlord.bukkit.skmcmmo.util.doc.Element;
-import net.fusionlord.bukkit.skmcmmo.util.doc.Type;
+import net.fusionlord.bukkit.skmcmmo.objects.Skill;
 import org.bukkit.entity.Player;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class EventValue
 {
 	public static void registerEventValues()
 	{
-		List<Element> es = new ArrayList<>();
-
-		es.add(new Element(Type.EVENT_VALUE).name("[on McMMO] event-player"));
 		EventValues.registerEventValue(
 				EvtMcMMOLevelUp.class, Player.class, new SerializableGetter<Player, EvtMcMMOLevelUp>()
 				{
@@ -27,28 +20,14 @@ public class EventValue
 				}, 0
 		);
 
-		es.add(new Element(Type.EVENT_VALUE).name("[on McMMO] event-skill"));
 		EventValues.registerEventValue(
-				EvtMcMMOLevelUp.class, String.class, new SerializableGetter<String, EvtMcMMOLevelUp>()
+				EvtMcMMOLevelUp.class, Skill.class, new SerializableGetter<Skill, EvtMcMMOLevelUp>()
 				{
-					public String get(EvtMcMMOLevelUp event)
+					public Skill get(EvtMcMMOLevelUp event)
 					{
-						return event.getSkill().getName();
+						return event.getSkill();
 					}
 				}, 0
 		);
-
-		es.add(new Element(Type.EVENT_VALUE).name("[on McMMO] event-level"));
-		EventValues.registerEventValue(
-				EvtMcMMOLevelUp.class, Integer.class, new SerializableGetter<Integer, EvtMcMMOLevelUp>()
-				{
-					public Integer get(EvtMcMMOLevelUp event)
-					{
-						return event.getSkillLevel();
-					}
-				}, 0
-		);
-
-		RegisterManager.registerEventValues(es);
 	}
 }

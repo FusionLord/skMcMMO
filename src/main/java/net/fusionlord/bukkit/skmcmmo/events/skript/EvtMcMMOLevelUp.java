@@ -1,6 +1,6 @@
 package net.fusionlord.bukkit.skmcmmo.events.skript;
 
-import com.gmail.nossr50.datatypes.skills.SkillType;
+import net.fusionlord.bukkit.skmcmmo.objects.Skill;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
@@ -11,15 +11,18 @@ public class EvtMcMMOLevelUp extends Event implements Cancellable
 	private static final HandlerList handlers = new HandlerList();
 
 	private Player player;
-	private SkillType skill;
-	private int skillLevel;
+	private Skill skill;
 	private boolean canceled;
 
-	public EvtMcMMOLevelUp(Player player, SkillType skill, int skillLevel)
+	public EvtMcMMOLevelUp(Player player, Skill skill)
 	{
 		this.player = player;
 		this.skill = skill;
-		this.skillLevel = skillLevel;
+	}
+
+	public static HandlerList getHandlerList()
+	{
+		return handlers;
 	}
 
 	@Override
@@ -40,22 +43,13 @@ public class EvtMcMMOLevelUp extends Event implements Cancellable
 		return handlers;
 	}
 
-	public static HandlerList getHandlerList()
-	{
-		return handlers;
-	}
 	public Player getPlayer()
 	{
 		return player;
 	}
 
-	public SkillType getSkill()
+	public Skill getSkill()
 	{
 		return skill;
-	}
-
-	public int getSkillLevel()
-	{
-		return skillLevel;
 	}
 }

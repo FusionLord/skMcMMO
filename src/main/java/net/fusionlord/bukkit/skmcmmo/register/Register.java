@@ -4,6 +4,7 @@ public class Register
 {
 	public static void register()
 	{
+		Expressions.registerExpressions();
 		Events.registerEvents();
 		EventValue.registerEventValues();
 	}
