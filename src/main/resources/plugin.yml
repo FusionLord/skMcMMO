@@ -1,0 +1,4 @@
+name: skMcMMO
+main: net.fusionlord.bukkit.skmcmmo.skMcMMO
+version: 1.0
+depend: [Skript, mcMMO]
