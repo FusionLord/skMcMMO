@@ -1,6 +1,6 @@
 package net.fusionlord.bukkit.skmcmmo.events.skript;
 
-import net.fusionlord.bukkit.skmcmmo.objects.Skill;
+import net.fusionlord.bukkit.skmcmmo.classes.Skill;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;

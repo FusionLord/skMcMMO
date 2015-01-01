@@ -1,8 +1,8 @@
 package net.fusionlord.bukkit.skmcmmo.events;
 
 import com.gmail.nossr50.events.experience.McMMOPlayerLevelUpEvent;
+import net.fusionlord.bukkit.skmcmmo.classes.Skill;
 import net.fusionlord.bukkit.skmcmmo.events.skript.EvtMcMMOLevelUp;
-import net.fusionlord.bukkit.skmcmmo.objects.Skill;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

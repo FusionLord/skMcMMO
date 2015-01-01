@@ -2,8 +2,8 @@ package net.fusionlord.bukkit.skmcmmo.register;
 
 import ch.njol.skript.classes.SerializableGetter;
 import ch.njol.skript.registrations.EventValues;
+import net.fusionlord.bukkit.skmcmmo.classes.Skill;
 import net.fusionlord.bukkit.skmcmmo.events.skript.EvtMcMMOLevelUp;
-import net.fusionlord.bukkit.skmcmmo.objects.Skill;
 import org.bukkit.entity.Player;
 
 public class EventValue
