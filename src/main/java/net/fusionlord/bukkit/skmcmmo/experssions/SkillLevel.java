@@ -15,7 +15,7 @@ public class SkillLevel extends SimpleExpression<Integer>
 	{
 		if (event instanceof EvtMcMMOLevelUp)
 		{
-			return new Integer[((EvtMcMMOLevelUp) event).getSkill().getSkillLevel()];
+			return new Integer[]{((EvtMcMMOLevelUp) event).getSkill().getSkillLevel()};
 		}
 		return null;
 	}
@@ -33,9 +33,9 @@ public class SkillLevel extends SimpleExpression<Integer>
 	}
 
 	@Override
-	public String toString(Event e, boolean debug)
+	public String toString(Event event, boolean debug)
 	{
-		return this.getClass().getName();
+		return "level";
 	}
 
 	@Override

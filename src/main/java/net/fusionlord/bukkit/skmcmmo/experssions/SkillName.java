@@ -35,7 +35,7 @@ public class SkillName extends SimpleExpression<String>
 	@Override
 	public String toString(Event event, boolean debug)
 	{
-		return this.getClass().getName();
+		return "name";
 	}
 
 	@Override

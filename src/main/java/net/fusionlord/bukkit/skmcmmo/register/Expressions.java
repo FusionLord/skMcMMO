@@ -10,7 +10,7 @@ public class Expressions
 
 	public static void registerExpressions()
 	{
-		Skript.registerExpression(SkillName.class, String.class, ExpressionType.SIMPLE, "skillname of %skill%");
-		Skript.registerExpression(SkillLevel.class, Integer.class, ExpressionType.SIMPLE, "skilllevel of %skill%");
+		Skript.registerExpression(SkillName.class, String.class, ExpressionType.SIMPLE, "name of %skill%");
+		Skript.registerExpression(SkillLevel.class, Integer.class, ExpressionType.SIMPLE, "level of %skill%");
 	}
 }

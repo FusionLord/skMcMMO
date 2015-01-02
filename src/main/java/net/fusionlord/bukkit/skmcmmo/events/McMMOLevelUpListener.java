@@ -12,12 +12,8 @@ public class McMMOLevelUpListener implements Listener
 	@EventHandler
 	public void onPlayerLevelUp(final McMMOPlayerLevelUpEvent event)
 	{
-		EvtMcMMOLevelUp mmoEvent = new EvtMcMMOLevelUp(
-				event.getPlayer(), new Skill(
-				event.getSkill(),
-				event.getSkillLevel()
-		)
-		);
+		Skill s = new Skill(event.getSkill(), event.getSkillLevel());
+		EvtMcMMOLevelUp mmoEvent = new EvtMcMMOLevelUp(event.getPlayer(), s);
 		Bukkit.getServer().getPluginManager().callEvent(mmoEvent);
 		event.setCancelled(mmoEvent.isCancelled());
 	}

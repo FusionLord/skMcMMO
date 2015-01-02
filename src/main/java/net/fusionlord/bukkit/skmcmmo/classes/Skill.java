@@ -5,9 +5,12 @@ import ch.njol.skript.classes.Parser;
 import ch.njol.skript.classes.Serializer;
 import ch.njol.skript.lang.ParseContext;
 import ch.njol.skript.registrations.Classes;
+import ch.njol.yggdrasil.Fields;
 import com.gmail.nossr50.datatypes.skills.SkillType;
 
 import javax.annotation.Nullable;
+import java.io.NotSerializableException;
+import java.io.StreamCorruptedException;
 
 public class Skill
 {
@@ -24,7 +27,7 @@ public class Skill
 	public static void register()
 	{
 		Classes.registerClass(
-				new ClassInfo<>(Skill.class, "skill")
+				new ClassInfo<Skill>(Skill.class, "skill")
 						.user("skill")
 						.name("McMMO Skill")
 						.description("McMMO Skill")
@@ -37,8 +40,7 @@ public class Skill
 									@Nullable
 									public Skill parse(String s, ParseContext context)
 									{
-										//return RegionsUtils.get(s);
-										return null;
+										return null;//new Skill();
 									}
 
 									public boolean canParse(ParseContext context)
@@ -81,18 +83,29 @@ public class Skill
 							}
 
 							@Override
-							public String serialize(Skill skill)
+							public Fields serialize(Skill skill)
 							{
-								return String.format("skill:%s,%s", skill.getSkillName(), skill.getSkillLevel());
+								Fields f = new Fields();
+								f.putObject("name", skill.getSkillName());
+								f.putObject("level", skill.getSkillLevel());
+								return f;
 							}
 
 							@Override
-							public Skill deserialize(final String x)
+							public void deserialize(Skill o, Fields f) throws StreamCorruptedException, NotSerializableException
 							{
-								String d = x.replaceAll("skill:", "");
-								String[] t = d.split(",");
-								SkillType skillType = SkillType.getSkill(t[0]);
-								return new Skill(skillType, Integer.parseInt(t[1]));
+								assert false;
+							}
+
+							@Override
+							public Skill deserialize(final Fields f) throws StreamCorruptedException
+							{
+								Skill s = new Skill(
+										SkillType.getSkill((String) f.getObject("name")), (int) f.getObject(
+										"level"
+								)
+								);
+								return s;
 							}
 						}
 				)
@@ -107,5 +120,10 @@ public class Skill
 	public int getSkillLevel()
 	{
 		return skillLevel;
+	}
+
+	public String toString()
+	{
+		return "Skill:" + skill.getName() + ", " + skillLevel;
 	}
 }
